@@ -5,8 +5,8 @@ typedef unsigned char UINT8;
 typedef struct solutionNode
 {
 	UINT8* tileIndex;
-	int* typeIndex;
-	int* posIndex;
+	UINT8* typeIndex;
+	UINT8* posIndex;
 	struct solutionNode* next;
 	char* graphic;
 }strSolutionNode;
@@ -23,6 +23,6 @@ public:
 
 	Solution(int inputRows);
 	~Solution();
-	void addSolution(UINT8* inputIndex , int* inputTypes , int* inputPositions , char* inputGraphic);
+	void addSolution(UINT8* inputIndex , UINT8* inputTypes , UINT8* inputPositions , char* inputGraphic);
 	bool isContain(char* inputGraphic);
 };

@@ -26,7 +26,7 @@ void printBoard(char* board , int row , int col);
 void getPositionForTypes(Tile *pT , int N);
 
 void compute(Solution* pS , Tile *pT , UINT8* index , int N);
-char* solve(Tile* pT , unsigned char* index , int* types , int* positions , int N);
+char* solve(Tile* pT , UINT8* index , UINT8* types , UINT8* positions , int N);
 
 // -- x --
 void computeByTree(Tile *pT , unsigned char* index , int N);
@@ -93,10 +93,12 @@ void main()
 			if(S.pLastSolution == NULL)
 			{
 				S.pSolution = localSolution.pSolution;
-				S.pLastSolution = localSolution.pSolution;
+				//S.pLastSolution = localSolution.pSolution;
 			}
 			else
 				S.pLastSolution->next = localSolution.pSolution;
+
+			S.pLastSolution = localSolution.pLastSolution;
 
 			S.nodeCount += localSolution.nodeCount;
 			localSolution.pSolution = NULL;
@@ -108,7 +110,17 @@ void main()
 		delete[] index[i];
 	delete[] index;
 
-	printf("solutions = %d\n" , S.nodeCount);
+	printf("solutions = %d\n\n" , S.nodeCount);
+
+	// print each solutionNode's graphic
+	i = 0;
+	strSolutionNode* pStr = S.pSolution;
+	while(pStr != NULL)
+	{
+		printf("(%d)\n" , ++i);
+		printBoard(pStr->graphic , _ROW_ , N);
+		pStr = pStr->next;
+	}
 	printf("**** KATAMINO END ****\n");
 }
 
@@ -127,7 +139,7 @@ void compute(Solution* pS , Tile *pT , UINT8* index , int N)
 
 	// 利用组中每块的每种形态(选1)的每种pos(选1)，进行穷举！
 	int i = 0 , j = 0;
-	int* nodes = new int[N];
+	UINT8* nodes = new UINT8[N];
 	int typeArrayCount = 1; // 所有形态的组合数
 	//nodes[i]表示这组积木中第i块积木所拥有的形态数
 	for(i = 0 ; i < N ; ++i)
@@ -137,9 +149,9 @@ void compute(Solution* pS , Tile *pT , UINT8* index , int N)
 	}
 
 	// 求出所有形态的组合 , typeArrayCount行 x N列 的数组
-	int** typeArray = new int*[typeArrayCount];
+	UINT8** typeArray = new UINT8*[typeArrayCount];
 	for(i = 0 ; i < typeArrayCount ; ++i)
-		typeArray[i] = new int[N];
+		typeArray[i] = new UINT8[N];
 
 	Loop typeLoop = Loop(N , nodes);
 	typeLoop.visit(typeArray);
@@ -158,7 +170,7 @@ printf(" , %d types\n" , typeArrayCount);
 
 		// 求出当前形态组合中，所有摆放位置的组合
 
-		int* pos = new int[N];
+		UINT8* pos = new UINT8[N];
 		int posArrayCount = 1;
 		
 		for(j = 0 ; j < N ; ++j)
@@ -175,9 +187,9 @@ printf(" , %d types\n" , typeArrayCount);
 			continue;
 		}
 
-		int** posArray = new int*[posArrayCount];
+		UINT8** posArray = new UINT8*[posArrayCount];
 		for(j = 0 ; j < posArrayCount ; ++j)
-			posArray[j] = new int[N];
+			posArray[j] = new UINT8[N];
 
 
 		Loop posLoop = Loop(N , pos);
@@ -194,7 +206,7 @@ printf(" , %d types\n" , typeArrayCount);
 					pS->addSolution(index , typeArray[i] , posArray[j] , resultGraphic);
 //				if(false == pS->isContain(resultGraphic))
 //					pS->addSolution(index , typeArray[i] , posArray[j] , resultGraphic);
-printBoard(resultGraphic , _ROW_ , N);
+//printBoard(resultGraphic , _ROW_ , N);
 			}
 		}
 
@@ -223,7 +235,7 @@ printBoard(resultGraphic , _ROW_ , N);
 
 
 
-char* solve(Tile* pT , unsigned char* index , int* types , int* positions , int N)
+char* solve(Tile* pT , UINT8* index , UINT8* types , UINT8* positions , int N)
 {
 	char* board = new char[_ROW_ * N];
 	memset(board , _SPACE_ , _ROW_ * N *sizeof(char));

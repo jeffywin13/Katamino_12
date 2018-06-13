@@ -2,10 +2,10 @@
 #include "Loop.h"
 #include "memory.h"
 
-Loop::Loop(int inputLayer , int* inputCount)
+Loop::Loop(int inputLayer , UINT8* inputCount)
 {
 	layer = inputLayer;
-	count = new int[layer];
+	count = new UINT8[layer];
 	totalCount = 1;
 	for(int i = 0 ; i < layer ; ++i)
 	{
@@ -13,8 +13,8 @@ Loop::Loop(int inputLayer , int* inputCount)
 		totalCount *= count[i];
 	}
 
-	index = new int[layer];
-	memset(index , 0 , sizeof(int) * layer);
+	index = new UINT8[layer];
+	memset(index , 0 , sizeof(UINT8) * layer);
 }
 
 Loop::~Loop()
@@ -23,11 +23,11 @@ Loop::~Loop()
 	delete[] index;
 }
 
-void Loop::visit(int **outputArray)
+void Loop::visit(UINT8 **outputArray)
 {
 	int i = 0;
-	memset(index , 0 , sizeof(int) * layer);
-	int bytes = sizeof(int) * layer;
+	memset(index , 0 , sizeof(UINT8) * layer);
+	int bytes = sizeof(UINT8) * layer;
 	while(i < totalCount)
 	{
 		memcpy(outputArray[i] , index , bytes); // 写入一行下标
