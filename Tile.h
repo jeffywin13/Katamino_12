@@ -36,11 +36,11 @@ public:
 
 typedef struct type
 {
-	int w;
-	int h;
+	UINT8 w;
+	UINT8 h;
 	unsigned char* shape;
-	int posCount;
-	int pos[MAX_POSITION];
+	UINT8 posCount;
+	UINT8 pos[MAX_POSITION];
 } strType;
 
 
@@ -54,12 +54,12 @@ bool shapeEqual(strType t1 , strType t2);
 class Tile
 {
 public:
-	int w;
-	int h;
+	UINT8 w;
+	UINT8 h;
 	Color c;
 	char m;
 	unsigned char* shape;
-	int typeCount;
+	UINT8 typeCount;
 	strType* types;
 
 //public:

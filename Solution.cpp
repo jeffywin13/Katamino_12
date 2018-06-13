@@ -110,18 +110,18 @@ bool Solution::isContain(char* inputGraphic)
 	return false;
 }
 
-void Solution::addSolution(UINT8* inputIndex , int* inputTypes , int* inputPositions , char* inputGraphic)
+void Solution::addSolution(UINT8* inputIndex , UINT8* inputTypes , UINT8* inputPositions , char* inputGraphic)
 {
 	strSolutionNode* newNode = new strSolutionNode;
 
 	newNode->tileIndex = new UINT8[cols];
 	memcpy(newNode->tileIndex , inputIndex , sizeof(UINT8) * cols);
 
-	newNode->typeIndex = new int[cols];
-	memcpy(newNode->typeIndex , inputTypes , sizeof(int) * cols);
+	newNode->typeIndex = new UINT8[cols];
+	memcpy(newNode->typeIndex , inputTypes , sizeof(UINT8) * cols);
 
-	newNode->posIndex = new int[cols];
-	memcpy(newNode->posIndex , inputPositions , sizeof(int) * cols);
+	newNode->posIndex = new UINT8[cols];
+	memcpy(newNode->posIndex , inputPositions , sizeof(UINT8) * cols);
 
 	newNode->next = NULL;
 	newNode->graphic = inputGraphic;

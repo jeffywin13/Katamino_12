@@ -19,14 +19,14 @@
 void main();
 void initTiles(Tile* pT);
 int getCountFromChoose(int total , int n);
-void getTilesIndex(unsigned char **index , int count , int max , int n);
+void getTilesIndex(UINT8 **index , int count , int max , int n);
 int getCountOf1(int num , unsigned char* result , int n);
 
 void printBoard(char* board , int row , int col);
 void getPositionForTypes(Tile *pT , int N);
 
-void compute(Solution* pS , Tile *pT , unsigned char* index , int N);
-char* solve(Tile* pT , unsigned char* index , int* types , int* positions , int N);
+void compute(Solution* pS , Tile *pT , UINT8* index , int N);
+char* solve(Tile* pT , UINT8* index , UINT8* types , UINT8* positions , int N);
 
 // -- x --
 void computeByTree(Tile *pT , unsigned char* index , int N);
@@ -59,9 +59,9 @@ void main()
 
 	// 初始化下标数组
 	int i = 0;
-	unsigned char **index = new unsigned char* [group];
+	UINT8 **index = new UINT8* [group];
 	for(i = 0 ; i < group ; ++i)
-		index[i] = new unsigned char[N];
+		index[i] = new UINT8[N];
 
 	// 给下标数组填数，每一行就是选出的一组N个tile的下标
 	getTilesIndex(index , group , _MAX_TILES_COUNT_ , N);
@@ -76,8 +76,8 @@ void main()
 	Solution S = Solution(N);
 
 	// 计算每一组方块是否能拼成？如果能，保存解法
-for(int xx = 0 ; xx < 1 ; ++xx)
-{
+// for(int xx = 0 ; xx < 10 ; ++xx)
+// { // this loop is for stress testing
 	for(i = 0 ; i < group ; ++i)
 	{
 // if(i == 84)
@@ -93,28 +93,40 @@ for(int xx = 0 ; xx < 1 ; ++xx)
 			if(S.pLastSolution == NULL)
 			{
 				S.pSolution = localSolution.pSolution;
-				S.pLastSolution = localSolution.pSolution;
+				//S.pLastSolution = localSolution.pSolution;
 			}
 			else
 				S.pLastSolution->next = localSolution.pSolution;
+
+			S.pLastSolution = localSolution.pLastSolution;
 
 			S.nodeCount += localSolution.nodeCount;
 			localSolution.pSolution = NULL;
 		}
 	}
-}
+//}
 	// 销毁下标数组
 	for(i = 0 ; i < group ; ++i)
 		delete[] index[i];
 	delete[] index;
 
-	printf("solutions = %d\n" , S.nodeCount);
+	printf("solutions = %d\n\n" , S.nodeCount);
+
+	// print each solutionNode's graphic
+	i = 0;
+	strSolutionNode* pStr = S.pSolution;
+	while(pStr != NULL)
+	{
+		printf("(%d)\n" , ++i);
+		printBoard(pStr->graphic , _ROW_ , N);
+		pStr = pStr->next;
+	}
 	printf("**** KATAMINO END ****\n");
 }
 
 
 
-void compute(Solution* pS , Tile *pT , unsigned char* index , int N)
+void compute(Solution* pS , Tile *pT , UINT8* index , int N)
 {
 	char* board = new char[_ROW_ * N];
 	memset(board , _SPACE_ , _ROW_ * N *sizeof(char));
@@ -127,7 +139,7 @@ void compute(Solution* pS , Tile *pT , unsigned char* index , int N)
 
 	// 利用组中每块的每种形态(选1)的每种pos(选1)，进行穷举！
 	int i = 0 , j = 0;
-	int* nodes = new int[N];
+	UINT8* nodes = new UINT8[N];
 	int typeArrayCount = 1; // 所有形态的组合数
 	//nodes[i]表示这组积木中第i块积木所拥有的形态数
 	for(i = 0 ; i < N ; ++i)
@@ -137,9 +149,9 @@ void compute(Solution* pS , Tile *pT , unsigned char* index , int N)
 	}
 
 	// 求出所有形态的组合 , typeArrayCount行 x N列 的数组
-	int** typeArray = new int*[typeArrayCount];
+	UINT8** typeArray = new UINT8*[typeArrayCount];
 	for(i = 0 ; i < typeArrayCount ; ++i)
-		typeArray[i] = new int[N];
+		typeArray[i] = new UINT8[N];
 
 	Loop typeLoop = Loop(N , nodes);
 	typeLoop.visit(typeArray);
@@ -158,7 +170,7 @@ printf(" , %d types\n" , typeArrayCount);
 
 		// 求出当前形态组合中，所有摆放位置的组合
 
-		int* pos = new int[N];
+		UINT8* pos = new UINT8[N];
 		int posArrayCount = 1;
 		
 		for(j = 0 ; j < N ; ++j)
@@ -175,9 +187,9 @@ printf(" , %d types\n" , typeArrayCount);
 			continue;
 		}
 
-		int** posArray = new int*[posArrayCount];
+		UINT8** posArray = new UINT8*[posArrayCount];
 		for(j = 0 ; j < posArrayCount ; ++j)
-			posArray[j] = new int[N];
+			posArray[j] = new UINT8[N];
 
 
 		Loop posLoop = Loop(N , pos);
@@ -194,7 +206,7 @@ printf(" , %d types\n" , typeArrayCount);
 					pS->addSolution(index , typeArray[i] , posArray[j] , resultGraphic);
 //				if(false == pS->isContain(resultGraphic))
 //					pS->addSolution(index , typeArray[i] , posArray[j] , resultGraphic);
-printBoard(resultGraphic , _ROW_ , N);
+//printBoard(resultGraphic , _ROW_ , N);
 			}
 		}
 
@@ -223,7 +235,7 @@ printBoard(resultGraphic , _ROW_ , N);
 
 
 
-char* solve(Tile* pT , unsigned char* index , int* types , int* positions , int N)
+char* solve(Tile* pT , UINT8* index , UINT8* types , UINT8* positions , int N)
 {
 	char* board = new char[_ROW_ * N];
 	memset(board , _SPACE_ , _ROW_ * N *sizeof(char));
@@ -321,7 +333,7 @@ int getCountFromChoose(int total , int n)
 }
 
 
-void getTilesIndex(unsigned char **index , int count , int max , int n)
+void getTilesIndex(UINT8 **index , int count , int max , int n)
 {
 	int i = 0 ; 
 	int limit = 1;
@@ -387,8 +399,8 @@ void getPositionForTypes(Tile *pT , int N)
 	{
 		for(int j = 0 ; j < pT[i].typeCount ; ++j)
 		{
-			int w = pT[i].types[j].w;
-			int h = pT[i].types[j].h;
+			UINT8 w = pT[i].types[j].w;
+			UINT8 h = pT[i].types[j].h;
 			p = &(pT[i].types[j]);
 			p->posCount = 0;
 
