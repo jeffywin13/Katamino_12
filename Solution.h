@@ -25,4 +25,5 @@ public:
 	~Solution();
 	void addSolution(UINT8* inputIndex , UINT8* inputTypes , UINT8* inputPositions , char* inputGraphic);
 	bool isContain(char* inputGraphic);
+	void printToFile(char* path);
 };

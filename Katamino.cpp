@@ -112,16 +112,17 @@ void main()
 
 	printf("solutions = %d\n\n" , S.nodeCount);
 
-	// print each solutionNode's graphic
-	i = 0;
-	strSolutionNode* pStr = S.pSolution;
-	while(pStr != NULL)
-	{
-		printf("(%d)\n" , ++i);
-		printBoard(pStr->graphic , _ROW_ , N);
-		pStr = pStr->next;
-	}
+// 	// print each solutionNode's graphic
+// 	i = 0;
+// 	strSolutionNode* pStr = S.pSolution;
+// 	while(pStr != NULL)
+// 	{
+// 		printf("(%d)\n" , ++i);
+// 		printBoard(pStr->graphic , _ROW_ , N);
+// 		pStr = pStr->next;
+// 	}
 	printf("**** KATAMINO END ****\n");
+	S.printToFile("D:\\KataminoSoution_");
 }
 
 
@@ -204,9 +205,6 @@ printf(" , %d types\n" , typeArrayCount);
 			{
 				if(false == pS->isContain(resultGraphic))
 					pS->addSolution(index , typeArray[i] , posArray[j] , resultGraphic);
-//				if(false == pS->isContain(resultGraphic))
-//					pS->addSolution(index , typeArray[i] , posArray[j] , resultGraphic);
-//printBoard(resultGraphic , _ROW_ , N);
 			}
 		}
 

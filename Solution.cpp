@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "Solution.h"
+#include "string.h"
+
+void fprintBoard(FILE* pf , char* board , int row , int col);
 
 Solution::Solution(int inputCols)
 {
@@ -133,4 +136,59 @@ void Solution::addSolution(UINT8* inputIndex , UINT8* inputTypes , UINT8* inputP
 
 	pLastSolution = newNode;
 	++nodeCount;
+}
+
+
+void Solution::printToFile(char* path)
+{
+	char pathname[128];
+	int len = strlen(path);
+	memset(pathname , 0 , 128 * sizeof(char));
+	memcpy(pathname , path , len * sizeof(char));
+	char filename[6] = {'0' , 'x' , '.' , 't' , 'x' , 't'};
+	char lut[13] = {'0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9' , '0' , '1' , '2'};
+	filename[0] = cols > 9 ? '1' : '0';
+	filename[1] = lut[cols];
+	memcpy(pathname + len , filename , 6 * sizeof(char));
+
+	char lut_m[12] = {'A' , 'B' , 'C' , 'D' , 'E' , 'F' , 'G' , 'H' , 'I' , 'J' , 'K' , 'L'};
+
+	FILE* pf = NULL;
+	pf = fopen(pathname , "wt");
+
+	int i = 0;
+	strSolutionNode* pStr = pSolution;
+	fprintf(pf , "there are %d solutions for N = %d\n\n" , nodeCount , cols);
+
+	while(pStr != NULL)
+	{
+		fprintf(pf , "solution(%d): using Tiles..." , ++i);
+		for(int j = 0 ; j < cols ; ++j)
+			fprintf(pf , "%3c" , lut_m[pStr->tileIndex[j]]);
+		fprintBoard(pf , pStr->graphic , rows , cols);
+		pStr = pStr->next;
+	}
+
+	if(NULL != pf)
+		fclose(pf);
+
+	return;
+}
+
+void fprintBoard(FILE* pf , char* board , int row , int col)
+{
+	fprintf(pf , "\n");
+	for(int i = 0 ; i < row ; ++i)
+	{
+		for(int j = 0 ; j < col ; ++j)
+		{
+			char c = board[i * col + j];
+			if(c == ' ')
+				fprintf(pf , " .");
+			else
+				fprintf(pf , "%2c" , c);
+		}
+		fprintf(pf , "\n");
+	}
+	fprintf(pf , "\n");
 }
