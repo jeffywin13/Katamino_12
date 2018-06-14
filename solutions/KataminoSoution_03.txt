@@ -1,0 +1,51 @@
+there are 7 solutions for N = 3
+
+solution(1): using Tiles...  B  D  E
+ D D D
+ D E D
+ B E E
+ B B E
+ B B E
+
+solution(2): using Tiles...  B  D  H
+ B B B
+ H B B
+ H D D
+ H H D
+ H D D
+
+solution(3): using Tiles...  F  G  H
+ G G G
+ H G F
+ H G F
+ H H F
+ H F F
+
+solution(4): using Tiles...  B  D  J
+ B B B
+ J B B
+ J J J
+ D J D
+ D D D
+
+solution(5): using Tiles...  B  D  K
+ K K K
+ K B B
+ K B B
+ D B D
+ D D D
+
+solution(6): using Tiles...  B  F  K
+ K K K
+ K F F
+ K B F
+ B B F
+ B B F
+
+solution(7): using Tiles...  E  F  K
+ K K K
+ K E F
+ K E F
+ E E F
+ E F F
+
