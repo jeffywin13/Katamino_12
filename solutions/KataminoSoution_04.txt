@@ -1,0 +1,352 @@
+there are 50 solutions for N = 4
+
+solution(1): using Tiles...  B  D  E  F
+ E D D D
+ E D B D
+ E E B B
+ F E B B
+ F F F F
+
+solution(2): using Tiles...  B  D  E  F
+ B B D D
+ B B B D
+ E E D D
+ F E E E
+ F F F F
+
+solution(3): using Tiles...  B  D  E  H
+ H D D D
+ H D E D
+ H H E E
+ H B B E
+ B B B E
+
+solution(4): using Tiles...  A  B  F  H
+ H H H H
+ A H B B
+ A A B B
+ F A A B
+ F F F F
+
+solution(5): using Tiles...  A  B  F  H
+ H H H H
+ F H A A
+ F A A B
+ F A B B
+ F F B B
+
+solution(6): using Tiles...  A  B  F  H
+ H H H H
+ F H B B
+ F A B B
+ F A A B
+ F F A A
+
+solution(7): using Tiles...  A  B  F  H
+ H B B B
+ H B B F
+ H H A F
+ H A A F
+ A A F F
+
+solution(8): using Tiles...  A  B  F  H
+ H B B B
+ H B B A
+ H H A A
+ H A A F
+ F F F F
+
+solution(9): using Tiles...  B  C  F  H
+ H H H H
+ C H F F
+ C C C F
+ B B C F
+ B B B F
+
+solution(10): using Tiles...  B  D  F  H
+ H H H H
+ D H D F
+ D D D F
+ B B B F
+ B B F F
+
+solution(11): using Tiles...  B  F  G  H
+ H H H H
+ G H F F
+ G G G F
+ G B B F
+ B B B F
+
+solution(12): using Tiles...  B  D  F  J
+ D D J J
+ D J J F
+ D D J F
+ B B B F
+ B B F F
+
+solution(13): using Tiles...  B  D  H  J
+ D D J J
+ D J J H
+ D D J H
+ B B H H
+ B B B H
+
+solution(14): using Tiles...  D  F  H  J
+ F F F F
+ F J J H
+ J J H H
+ D J D H
+ D D D H
+
+solution(15): using Tiles...  D  F  H  J
+ H H H H
+ J H D D
+ J J J D
+ F J D D
+ F F F F
+
+solution(16): using Tiles...  D  F  H  J
+ H H H H
+ J H F F
+ J J J F
+ D J D F
+ D D D F
+
+solution(17): using Tiles...  F  G  H  J
+ F F J J
+ F J J H
+ F G J H
+ F G H H
+ G G G H
+
+solution(18): using Tiles...  B  C  D  K
+ K K K C
+ K C C C
+ K C D D
+ B B B D
+ B B D D
+
+solution(19): using Tiles...  B  C  F  K
+ K K K C
+ K C C C
+ K C B B
+ F B B B
+ F F F F
+
+solution(20): using Tiles...  B  C  F  K
+ F F F F
+ K K K F
+ K C C B
+ K C B B
+ C C B B
+
+solution(21): using Tiles...  C  E  F  K
+ K K K C
+ K C C C
+ K C E E
+ E E E F
+ F F F F
+
+solution(22): using Tiles...  C  E  F  K
+ K K K E
+ K C C E
+ K C E E
+ C C E F
+ F F F F
+
+solution(23): using Tiles...  A  B  G  K
+ K K K G
+ K G G G
+ K A A G
+ B B A A
+ B B B A
+
+solution(24): using Tiles...  A  B  G  K
+ K K K G
+ K G G G
+ K A A G
+ A A B B
+ A B B B
+
+solution(25): using Tiles...  B  F  G  K
+ F F F F
+ K K K F
+ K G B B
+ K G B B
+ G G G B
+
+solution(26): using Tiles...  B  F  G  K
+ K K K B
+ K G B B
+ K G B B
+ G G G F
+ F F F F
+
+solution(27): using Tiles...  B  F  G  K
+ K K K G
+ K G G G
+ K B B G
+ F B B B
+ F F F F
+
+solution(28): using Tiles...  B  F  G  K
+ K K K G
+ K G G G
+ K B B G
+ B B B F
+ F F F F
+
+solution(29): using Tiles...  B  F  H  K
+ F K K K
+ F K B B
+ F K B B
+ F F H B
+ H H H H
+
+solution(30): using Tiles...  B  F  H  K
+ K K K H
+ K B H H
+ K B B H
+ F B B H
+ F F F F
+
+solution(31): using Tiles...  B  F  H  K
+ F F F F
+ K K K F
+ K B B B
+ K H B B
+ H H H H
+
+solution(32): using Tiles...  D  F  H  K
+ F F F F
+ K K K F
+ K D D D
+ K D H D
+ H H H H
+
+solution(33): using Tiles...  D  F  H  K
+ K K K H
+ K D D H
+ K D H H
+ F D D H
+ F F F F
+
+solution(34): using Tiles...  E  G  H  K
+ K K K H
+ K E H H
+ K E G H
+ E E G H
+ E G G G
+
+solution(35): using Tiles...  D  F  J  K
+ F F F F
+ K K K F
+ K J D D
+ K J J D
+ J J D D
+
+solution(36): using Tiles...  D  F  J  K
+ K K K J
+ K J J J
+ K D J D
+ F D D D
+ F F F F
+
+solution(37): using Tiles...  B  D  E  L
+ L D D D
+ L D E D
+ L B E E
+ L B B E
+ L B B E
+
+solution(38): using Tiles...  B  D  E  L
+ D D D L
+ D E D L
+ B E E L
+ B B E L
+ B B E L
+
+solution(39): using Tiles...  B  D  H  L
+ L B B B
+ L H B B
+ L H D D
+ L H H D
+ L H D D
+
+solution(40): using Tiles...  B  D  H  L
+ B B B L
+ H B B L
+ H D D L
+ H H D L
+ H D D L
+
+solution(41): using Tiles...  F  G  H  L
+ L G G G
+ L H G F
+ L H G F
+ L H H F
+ L H F F
+
+solution(42): using Tiles...  F  G  H  L
+ G G G L
+ H G F L
+ H G F L
+ H H F L
+ H F F L
+
+solution(43): using Tiles...  B  D  J  L
+ L B B B
+ L J B B
+ L J J J
+ L D J D
+ L D D D
+
+solution(44): using Tiles...  B  D  J  L
+ B B B L
+ J B B L
+ J J J L
+ D J D L
+ D D D L
+
+solution(45): using Tiles...  B  D  K  L
+ L K K K
+ L K B B
+ L K B B
+ L D B D
+ L D D D
+
+solution(46): using Tiles...  B  D  K  L
+ K K K L
+ K B B L
+ K B B L
+ D B D L
+ D D D L
+
+solution(47): using Tiles...  B  F  K  L
+ L K K K
+ L K F F
+ L K B F
+ L B B F
+ L B B F
+
+solution(48): using Tiles...  B  F  K  L
+ K K K L
+ K F F L
+ K B F L
+ B B F L
+ B B F L
+
+solution(49): using Tiles...  E  F  K  L
+ L K K K
+ L K E F
+ L K E F
+ L E E F
+ L E F F
+
+solution(50): using Tiles...  E  F  K  L
+ K K K L
+ K E F L
+ K E F L
+ E E F L
+ E F F L
+
